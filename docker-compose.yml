@@ -14,7 +14,7 @@ services:
       - --entrypoints.web.http.redirections.entryPoint.scheme=https
       - --entrypoints.web.http.redirections.entrypoint.permanent=true
       # Tailscale cert resolver
-      - --certificatesresolvers.tailscale.tailscale=true
+      - --certificatesresolvers.myresolver.tailscale=true
       # Plugins
       - --experimental.plugins.rewrite-body.modulename=github.com/packruler/rewrite-body
       - --experimental.plugins.rewrite-body.version=v1.2.0
@@ -59,7 +59,7 @@ services:
       - traefik.http.routers.sonarr.rule=(Host(`${HOSTNAME}`) &&
         PathPrefix(`/sonarr`))
       - traefik.http.routers.sonarr.tls=true
-      - traefik.http.routers.sonarr.tls.certresolver=tailscale
+      - traefik.http.routers.sonarr.tls.certresolver=myresolver
       - traefik.http.services.sonarr.loadbalancer.server.port=8989
       - traefik.http.routers.sonarr.entrypoints=web-secure
       - homepage.group=Media
@@ -95,7 +95,7 @@ services:
       - traefik.http.routers.radarr.rule=(Host(`${HOSTNAME}`) &&
         PathPrefix(`/radarr`))
       - traefik.http.routers.radarr.tls=true
-      - traefik.http.routers.radarr.tls.certresolver=tailscale
+      - traefik.http.routers.radarr.tls.certresolver=myresolver
       - traefik.http.services.radarr.loadbalancer.server.port=7878
       - traefik.http.routers.radarr.entrypoints=web-secure
       - homepage.group=Media
@@ -131,7 +131,7 @@ services:
       - traefik.http.routers.bazarr.rule=(Host(`${HOSTNAME}`) &&
         PathPrefix(`/bazarr`))
       - traefik.http.routers.bazarr.tls=true
-      - traefik.http.routers.bazarr.tls.certresolver=tailscale
+      - traefik.http.routers.bazarr.tls.certresolver=myresolver
       - traefik.http.services.bazarr.loadbalancer.server.port=6767
       - traefik.http.routers.bazarr.entrypoints=web-secure
       - homepage.group=Download
@@ -165,7 +165,7 @@ services:
       - traefik.enable=true
       - traefik.http.routers.jellyseerr.rule=(Host(`${JELLYSEERR_HOSTNAME}`))
       - traefik.http.routers.jellyseerr.tls=true
-      - traefik.http.routers.jellyseerr.tls.certresolver=tailscale
+      - traefik.http.routers.jellyseerr.tls.certresolver=myresolver
       - traefik.http.services.jellyseerr.loadbalancer.server.port=5055
       - traefik.http.routers.jellyseerr.entrypoints=web-secure
       - homepage.group=Media
@@ -200,7 +200,7 @@ services:
       - traefik.http.routers.prowlarr.rule=(Host(`${HOSTNAME}`) &&
         PathPrefix(`/prowlarr`))
       - traefik.http.routers.prowlarr.tls=true
-      - traefik.http.routers.prowlarr.tls.certresolver=tailscale
+      - traefik.http.routers.prowlarr.tls.certresolver=myresolver
       - traefik.http.services.prowlarr.loadbalancer.server.port=9696
       - traefik.http.routers.prowlarr.entrypoints=web-secure
       - homepage.group=Download
@@ -257,7 +257,7 @@ services:
       - traefik.http.routers.qbittorrent.rule=(Host(`${HOSTNAME}`) &&
         PathPrefix(`/qbittorrent`))
       - traefik.http.routers.qbittorrent.tls=true
-      - traefik.http.routers.qbittorrent.tls.certresolver=tailscale
+      - traefik.http.routers.qbittorrent.tls.certresolver=myresolver
       - traefik.http.services.qbittorrent.loadbalancer.server.port=8080
       - traefik.http.routers.qbittorrent.entrypoints=web-secure
       - traefik.http.routers.qbittorrent.middlewares=qbittorrent-strip-slash,qbittorrent-stripprefix
@@ -335,7 +335,7 @@ services:
       - traefik.http.routers.jellyfin.rule=(Host(`${HOSTNAME}`) &&
         PathPrefix(`/jellyfin`))
       - traefik.http.routers.jellyfin.tls=true
-      - traefik.http.routers.jellyfin.tls.certresolver=tailscale
+      - traefik.http.routers.jellyfin.tls.certresolver=myresolver
       - traefik.http.routers.jellyfin.entrypoints=web-secure
       - traefik.http.services.jellyfin.loadbalancer.server.port=8096
       - homepage.group=Media
@@ -374,7 +374,7 @@ services:
       - traefik.http.routers.homepage.rule=(Host(`${HOSTNAME}`) &&
         PathPrefix(`/`))
       - traefik.http.routers.homepage.tls=true
-      - traefik.http.routers.homepage.tls.certresolver=tailscale
+      - traefik.http.routers.homepage.tls.certresolver=myresolver
       - traefik.http.routers.homepage.entrypoints=web-secure
       - traefik.http.services.homepage.loadbalancer.server.port=3000
   watchtower:
